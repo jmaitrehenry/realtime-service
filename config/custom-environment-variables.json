@@ -1,0 +1,7 @@
+{
+    "applications": "APPLICATIONS",
+    "authentification_url": "AUTHENTIFICATION_URL",
+    "authorization_url": "AUTHORIZATION_URL",
+    "unsubscribe_url": "UNSUBSCRIBE_URL",
+    "redis": "REDIS_HOST"
+}
