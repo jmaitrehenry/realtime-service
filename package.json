@@ -1,7 +1,12 @@
 {
   "name": "realtime-push-server",
-  "version": "0.0.1",
-  "description": "",
+  "version": "1.0.0",
+  "description": "A realtime push server using socket.io and exposing a HTTP API for \"pushing\" information to client.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/petalmd/realtime-push-server.git"
+  },
+  "license": "Apache-2.0",
   "dependencies": {
     "basic-auth": "^2.0.0",
     "body-parser": "^1.18.2",
