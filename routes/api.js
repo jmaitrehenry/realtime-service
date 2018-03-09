@@ -1,15 +1,18 @@
 const express = require('express');
+
 const utils = require('../lib/utils');
   
-exports.default = function(io) {
-  const routeur = express.Router();
+module.exports = (io, metric) => {
+  const router = express.Router();
 
-  routeur.use('/', utils.auth);
+  router.use('/', utils.auth);
   
-  routeur.post('/push/:channel/:event', function(req, res) {
-    io.sockets.in(req.params.channel).emit(req.params.event, req.body)
-    res.send('Fire and forget!')
+  router.post('/push/:channel/:event', (req, res) => {
+    io.sockets.in(req.params.channel).emit(req.params.event, req.body);
+    res.send('Fire and forget!');
+
+    metric.incMessageSent();
   });
 
-  return routeur;
+  return router;
 }
