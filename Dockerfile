@@ -5,7 +5,7 @@ RUN chown -R node. /code
 
 USER node
 WORKDIR /code
-EXPOSE 5000
+EXPOSE 3000
 
 RUN npm install
 
