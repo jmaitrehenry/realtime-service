@@ -2,10 +2,11 @@ const app = require('express')();
 const http = require('http').Server(app);
 const socketIO = require('socket.io');
 const redis = require('socket.io-redis');
-const bodyParser = require('body-parser');
-
 const config = require('config');
+
 const utils = require('./lib/utils');
+const metrics = require('./lib/metric.js')();
+const libSocket = require('./lib/socket')(metrics);
 const routes = require('./routes');
 
 const io = new socketIO(http, {
@@ -14,12 +15,16 @@ const io = new socketIO(http, {
   cookie: false
 })
 
-const jsonParser = bodyParser.json();
+const appRouter = routes(io, metrics);
+const metricRouter = metrics.router;
 
-app.use('/api', jsonParser, routes.api(io));
+app.use(metricRouter);
+app.use(appRouter);
 
-io.on('connection', utils.socketOnConnection);
+console.log(libSocket.onConnection)
 
-http.listen(5000, function(){
-  console.log('listening on *:5000');
+io.on('connection', libSocket.onConnection);
+
+http.listen(3000, function(){
+  console.log('listening on *:3000');
 });

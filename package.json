@@ -13,6 +13,7 @@
     "config": "^1.29.2",
     "express": "^4.15.2",
     "nodemon": "^1.14.11",
+    "prom-client": "^10.2.2",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
     "request-promise-native": "^1.0.5",

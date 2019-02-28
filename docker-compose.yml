@@ -7,12 +7,12 @@ services:
     working_dir: /code
     user: node
     ports:
-      - 5000:5000
+      - 8080:3000
     environment:
       REDIS_HOST: "redis"
       APPLICATIONS: "ae0dc034-21cf-447f-88da-cc0643369525:PHDw6kvgOKbvdby0Z7NLgSO9wcXGIBYW"
-      AUTHENTIFICATION_URL: "http://localhost:3000/api/v2/ping"
-      AUTHORIZATION_URL: "http://localhost:3000/websocket/authorize"
+      AUTHENTIFICATION_URL: "http://docker.for.mac.host.internal:3000/api/v2/ping"
+      AUTHORIZATION_URL: "http://docker.for.mac.host.internal:3000/websocket/authorize"
     command: "bin/dev"
   redis:
     image: redis:3-alpine
